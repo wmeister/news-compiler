@@ -21,11 +21,9 @@ class Tests < Test::Unit::TestCase
   def test_slurp2
     assert_equal("foo\n", file.slurp2("./test.txt"))
   end
-  
-  def test_date
-    d = file.dates(@n)
-    assrt_not_nil d
-    assert_equal d.created, @f.ctime
-    assert_equal d.updated, @f.utime
+
+  def test_ObjectHash
+    o = obj({"hello" => "world"})
+    assert_equal(o.hello, "world")
   end
 end

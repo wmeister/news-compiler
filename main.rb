@@ -1,3 +1,5 @@
+
+
 class Object
     def file
         def slurp(n)
@@ -8,7 +10,21 @@ class Object
             slurp(n).join
         end
     end
+
+    def obj(h)
+        ObjectHash.new(h)
+    end
+
+    def die(s)
+        puts "died: #{s}"
+    end
+end
+
+class ObjectHash
+    def initialize(h)
+        @h = h
+    end
     def method_missing(m, *args, &block)
-        #puts "no #{m}"
-    end    
+        @h[m] if @h[m] or die "no hash key exists: #{m}"
+    end
 end
